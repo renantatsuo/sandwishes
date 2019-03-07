@@ -1,0 +1,8 @@
+{
+  "name": "dextra-front-end-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:renantatsuo/dextra-front-end-challenge.git",
+  "author": "Renan Tatsuo (kodi) <tatsuorenan@gmail.com>",
+  "license": "MIT"
+}
