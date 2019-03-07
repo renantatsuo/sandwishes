@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "X-Bacon",
+    "description": "Bacon, hambúrguer de carne e queijo",
+    "recipe": [1, 2, 4]
+  },
+  {
+    "id": 1,
+    "name": "X-Burger",
+    "description": "Hambúrguer de carne e queijo",
+    "recipe": [2, 4]
+  },
+  {
+    "id": 2,
+    "name": "X-Egg",
+    "description": "Ovo, hambúrguer de carne e queijo",
+    "recipe": [2, 3, 4]
+  },
+  {
+    "id": 3,
+    "name": "X-Egg Bacon",
+    "description": "Ovo, bacon, hambúrguer de carne e queijo",
+    "recipe": [1, 2, 3, 4]
+  }
+]
