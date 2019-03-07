@@ -4,5 +4,11 @@
   "main": "index.js",
   "repository": "git@github.com:renantatsuo/dextra-front-end-challenge.git",
   "author": "Renan Tatsuo (kodi) <tatsuorenan@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
 }
