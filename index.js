@@ -10,7 +10,7 @@ process.on('uncaughtException', (err) => {
 });
 
 const server = Hapi.Server({
-  port: 3333,
+  port: 5000,
   host: 'localhost',
 });
 
