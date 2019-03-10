@@ -15,7 +15,7 @@ class App extends Component {
     sandwiches: []
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetchSandwiches().then((sandwiches) => {
       fetchIngredients().then((ingredients) => {
         this.setState({
