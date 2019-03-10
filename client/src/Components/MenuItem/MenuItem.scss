@@ -1,0 +1,45 @@
+.menu_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  width: 540px;
+  padding: 10px;
+  margin-bottom: 15px;
+
+  background: #ffffff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: #f1f2f3;
+  }
+
+  .menu_item--photo img {
+    height: 80px;
+    width: auto;
+  }
+
+  .menu_item--info {
+    flex: 2;
+    margin: 0 20px;
+
+    > div {
+      margin: 5px;
+    }
+
+    .menu_item--info__title {
+      font-weight: bold;
+    }
+
+    .menu_item--info__desc {
+      color: #999999;
+    }
+  }
+
+  .menu_item--cart svg {
+    width: 32px;
+    height: 32px;
+    fill: #e73737;
+    margin: 10px;
+  }
+}
