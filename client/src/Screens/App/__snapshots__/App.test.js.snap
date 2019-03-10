@@ -1,0 +1,357 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test App screen renders without crashing 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="app__header"
+        >
+          <img
+            alt="Sand Wishes Logo"
+            src="logo.svg"
+          />
+        </div>,
+        <div
+          className="app__content"
+        >
+          <div
+            className="app__diy"
+          >
+            <button
+              className="app__diy__button"
+              type="button"
+            >
+              Monte você mesmo
+            </button>
+          </div>
+          <div
+            className="app__menu"
+          >
+            <h1>
+              Escolher no cardápio
+            </h1>
+          </div>
+        </div>,
+      ],
+      "className": "app__card",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <img
+            alt="Sand Wishes Logo"
+            src="logo.svg"
+          />,
+          "className": "app__header",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "Sand Wishes Logo",
+            "src": "logo.svg",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="app__diy"
+            >
+              <button
+                className="app__diy__button"
+                type="button"
+              >
+                Monte você mesmo
+              </button>
+            </div>,
+            <div
+              className="app__menu"
+            >
+              <h1>
+                Escolher no cardápio
+              </h1>
+            </div>,
+          ],
+          "className": "app__content",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <button
+                className="app__diy__button"
+                type="button"
+              >
+                Monte você mesmo
+              </button>,
+              "className": "app__diy",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Monte você mesmo",
+                "className": "app__diy__button",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": "Monte você mesmo",
+              "type": "button",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h1>
+                  Escolher no cardápio
+                </h1>,
+                Array [],
+              ],
+              "className": "app__menu",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Escolher no cardápio",
+                },
+                "ref": null,
+                "rendered": "Escolher no cardápio",
+                "type": "h1",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="app__header"
+          >
+            <img
+              alt="Sand Wishes Logo"
+              src="logo.svg"
+            />
+          </div>,
+          <div
+            className="app__content"
+          >
+            <div
+              className="app__diy"
+            >
+              <button
+                className="app__diy__button"
+                type="button"
+              >
+                Monte você mesmo
+              </button>
+            </div>
+            <div
+              className="app__menu"
+            >
+              <h1>
+                Escolher no cardápio
+              </h1>
+            </div>
+          </div>,
+        ],
+        "className": "app__card",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <img
+              alt="Sand Wishes Logo"
+              src="logo.svg"
+            />,
+            "className": "app__header",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "Sand Wishes Logo",
+              "src": "logo.svg",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="app__diy"
+              >
+                <button
+                  className="app__diy__button"
+                  type="button"
+                >
+                  Monte você mesmo
+                </button>
+              </div>,
+              <div
+                className="app__menu"
+              >
+                <h1>
+                  Escolher no cardápio
+                </h1>
+              </div>,
+            ],
+            "className": "app__content",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <button
+                  className="app__diy__button"
+                  type="button"
+                >
+                  Monte você mesmo
+                </button>,
+                "className": "app__diy",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Monte você mesmo",
+                  "className": "app__diy__button",
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": "Monte você mesmo",
+                "type": "button",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h1>
+                    Escolher no cardápio
+                  </h1>,
+                  Array [],
+                ],
+                "className": "app__menu",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Escolher no cardápio",
+                  },
+                  "ref": null,
+                  "rendered": "Escolher no cardápio",
+                  "type": "h1",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

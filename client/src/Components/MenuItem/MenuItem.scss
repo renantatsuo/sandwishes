@@ -1,0 +1,52 @@
+.menu_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  width: 540px;
+  padding: 10px;
+  margin-bottom: 15px;
+
+  background: #ffffff;
+  border: none;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: background ease 300ms;
+
+  &:hover,
+  &:focus {
+    background: #f1f2f3;
+    outline: none;
+  }
+
+  .menu_item__photo img {
+    height: 80px;
+    width: auto;
+  }
+
+  .menu_item__info {
+    flex: 1;
+    margin: 0 20px;
+    text-align: left;
+    font-size: 14px;
+
+    > div {
+      margin: 5px;
+    }
+
+    .menu_item__info--title {
+      font-weight: bold;
+    }
+
+    .menu_item__info--desc {
+      color: #999999;
+    }
+  }
+
+  .menu_item__cart svg {
+    width: 32px;
+    height: 32px;
+    fill: #e73737;
+    margin: 10px;
+  }
+}
