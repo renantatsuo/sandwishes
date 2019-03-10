@@ -1,0 +1,36 @@
+.app--card {
+  width: 1040px;
+  height: 850px;
+  position: relative;
+
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  padding: 50px;
+
+  .app--header {
+    width: 100%;
+    margin-bottom: 70px;
+
+    img {
+      max-width: 250px;
+    }
+  }
+
+  .app--content {
+    display: flex;
+  }
+
+  &::after {
+    content: 'SandWishes 2019';
+    font-weight: 300;
+    font-size: 12px;
+    bottom: 30px;
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    text-align: center;
+  }
+}

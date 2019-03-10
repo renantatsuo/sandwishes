@@ -1,8 +1,8 @@
 module.exports = [
   {
     method: 'GET',
-    path: '/api/hamburgers',
-    handler: (req, res) => res.file('server/hamburgers.json'),
+    path: '/api/sandwiches',
+    handler: (req, res) => res.file('server/sandwiches.json'),
   },
   {
     method: 'GET',
