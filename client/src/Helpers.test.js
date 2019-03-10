@@ -1,4 +1,12 @@
-import { calculatePrice, convertFloatToMoney } from './Helpers'
+import axios from 'axios'
+import {
+  calculatePrice,
+  convertFloatToMoney,
+  fetchIngredients,
+  fetchSandwiches
+} from './Helpers'
+
+jest.mock('axios')
 
 const MockIngredients = [
   { id: 0, name: 'Alface', price: 0.4 },
@@ -27,11 +35,53 @@ describe('convertFloatToMoney', () => {
     expect(convertFloatToMoney(0)).toEqual('0,00')
   })
 
+  it('Should return 0,00', () => {
+    expect(convertFloatToMoney()).toEqual('0,00')
+  })
+
   it('Should return 0,10', () => {
     expect(convertFloatToMoney(0.1)).toEqual('0,10')
   })
 
   it('Should return 111,11', () => {
     expect(convertFloatToMoney(111.111)).toEqual('111,11')
+  })
+})
+
+describe('fetchSandwiches', () => {
+  it('Should return []', () => {
+    axios.get.mockResolvedValue({ data: [] })
+
+    return fetchSandwiches().then((sandwiches) =>
+      expect(sandwiches).toHaveLength(0)
+    )
+  })
+
+  it('Should return 1 object', () => {
+    axios.get.mockResolvedValue({ data: [{}] })
+
+    return fetchSandwiches().then((sandwiches) => {
+      expect(sandwiches).toHaveLength(1)
+      expect(typeof sandwiches[0]).toBeTruthy()
+    })
+  })
+})
+
+describe('fetchIngredients', () => {
+  it('Should return []', () => {
+    axios.get.mockResolvedValue({ data: [] })
+
+    return fetchIngredients().then((ingredients) =>
+      expect(ingredients).toHaveLength(0)
+    )
+  })
+
+  it('Should return 1 object', () => {
+    axios.get.mockResolvedValue({ data: [{}] })
+
+    return fetchIngredients().then((ingredients) => {
+      expect(ingredients).toHaveLength(1)
+      expect(typeof ingredients[0]).toBeTruthy()
+    })
   })
 })

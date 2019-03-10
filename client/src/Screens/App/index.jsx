@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
 import './App.scss'
 import Logo from '../../Assets/logo.svg'
 import Burger from '../../Assets/burger.svg'
 import MenuItem from '../../Components/MenuItem/index'
-import { calculatePrice } from '../../Helpers'
+import {
+  calculatePrice,
+  fetchSandwiches,
+  fetchIngredients
+} from '../../Helpers'
 
 class App extends Component {
   state = {
@@ -13,11 +16,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    axios.get('/api/sandwiches').then((response) => {
-      const sandwiches = response.data
-
-      axios.get('/api/ingredients').then((_response) => {
-        const ingredients = _response.data
+    fetchSandwiches().then((sandwiches) => {
+      fetchIngredients().then((ingredients) => {
         this.setState({
           sandwiches: sandwiches.map((sandwich) => ({
             ...sandwich,
