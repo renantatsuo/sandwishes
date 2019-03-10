@@ -1,4 +1,4 @@
-.app--card {
+.app__card {
   width: 1040px;
   height: 850px;
   position: relative;
@@ -9,7 +9,7 @@
   border-radius: 3px;
   padding: 50px;
 
-  .app--header {
+  .app__header {
     width: 100%;
     margin-bottom: 70px;
 
@@ -18,8 +18,38 @@
     }
   }
 
-  .app--content {
+  .app__content {
     display: flex;
+    justify-content: space-between;
+
+    .app__diy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-top: 34px;
+      height: 500px;
+      width: 300px;
+      background: url(../../Assets/diy-background.png);
+
+      .app__diy__button {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+
+        padding: 20px;
+        background: #e73737;
+        border: none;
+
+        cursor: pointer;
+        transition: background ease 300ms;
+
+        &:hover,
+        &:focus {
+          background: #b70606;
+          outline: none;
+        }
+      }
+    }
   }
 
   &::after {

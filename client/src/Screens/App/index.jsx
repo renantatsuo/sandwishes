@@ -44,13 +44,17 @@ class App extends Component {
     const { sandwiches } = this.state
 
     return (
-      <div className="app--card">
-        <div className="app--header">
+      <div className="app__card">
+        <div className="app__header">
           <img src={Logo} alt="Sand Wishes Logo" />
         </div>
-        <div className="app--content">
-          <div className="app--diy" />
-          <div className="app--menu">
+        <div className="app__content">
+          <div className="app__diy">
+            <button type="button" className="app__diy__button">
+              Monte você mesmo
+            </button>
+          </div>
+          <div className="app__menu">
             <h1>Escolher no cardápio</h1>
             {this.mapSandwiches(sandwiches)}
           </div>
