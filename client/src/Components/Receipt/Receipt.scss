@@ -1,4 +1,6 @@
 .receipt__info {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin-left: 50px;
 
@@ -11,6 +13,11 @@
 
     .receipt__item__desc {
       flex: 1;
+    }
+
+    &.receipt__item--final {
+      margin-bottom: 20px;
+      margin-top: auto;
     }
   }
 }

@@ -4,9 +4,8 @@ exports[`Test Ingredient component Should render values 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ReceiptItem
-    itemName="Test"
     price={1}
-    quantity={1}
+    text="Test"
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -26,7 +25,7 @@ ShallowWrapper {
         <div
           className="receipt__item__desc"
         >
-          (1x) Test
+          Test
         </div>,
         <div
           className="receipt__item__price"
@@ -35,7 +34,7 @@ ShallowWrapper {
           1,00
         </div>,
       ],
-      "className": "receipt__item",
+      "className": "receipt__item undefined",
     },
     "ref": null,
     "rendered": Array [
@@ -44,11 +43,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "(1x) Test",
+          "children": "Test",
           "className": "receipt__item__desc",
         },
         "ref": null,
-        "rendered": "(1x) Test",
+        "rendered": "Test",
         "type": "div",
       },
       Object {
@@ -82,7 +81,7 @@ ShallowWrapper {
           <div
             className="receipt__item__desc"
           >
-            (1x) Test
+            Test
           </div>,
           <div
             className="receipt__item__price"
@@ -91,7 +90,7 @@ ShallowWrapper {
             1,00
           </div>,
         ],
-        "className": "receipt__item",
+        "className": "receipt__item undefined",
       },
       "ref": null,
       "rendered": Array [
@@ -100,11 +99,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "(1x) Test",
+            "children": "Test",
             "className": "receipt__item__desc",
           },
           "ref": null,
-          "rendered": "(1x) Test",
+          "rendered": "Test",
           "type": "div",
         },
         Object {

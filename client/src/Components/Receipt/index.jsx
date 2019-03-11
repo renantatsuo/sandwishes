@@ -1,7 +1,11 @@
 import React from 'react'
 import { ShoppingCartOutlined } from '@material-ui/icons'
 
-import { convertFloatToMoney, calculatePrice } from '../../Helpers'
+import {
+  convertFloatToMoney,
+  calculatePrice,
+  getPromotionDiscount
+} from '../../Helpers'
 import './Receipt.scss'
 import ReceiptItem from '../ReceiptItem/index'
 
@@ -20,23 +24,35 @@ const mapRecipe = (recipe, ingredients) => {
     return (
       <ReceiptItem
         key={ingredient.id}
-        itemName={ingredientName}
+        text={`(${countIngredients}x) ${ingredientName}`}
         price={ingredientTotalPrice}
-        quantity={countIngredients}
       />
     )
   })
 }
 
 const Receipt = ({ ingredients, recipe }) => {
+  const subTotal = calculatePrice(recipe, ingredients)
+  const promotionDiscount = getPromotionDiscount(recipe, ingredients)
+  const total = subTotal - promotionDiscount
   return (
     <>
-      <div className="receipt__info">{mapRecipe(recipe, ingredients)}</div>
+      <div className="receipt__info">
+        {mapRecipe(recipe, ingredients)}
+        {promotionDiscount ? (
+          <ReceiptItem
+            key={Math.random() * 1000}
+            text="Promotional Discount"
+            price={promotionDiscount}
+            className="receipt__item--final"
+          />
+        ) : (
+          ''
+        )}
+      </div>
       <div className="receipt__total">
         <ShoppingCartOutlined />
-        <span>
-          R$ {convertFloatToMoney(calculatePrice(recipe, ingredients))}
-        </span>
+        <span>R$ {convertFloatToMoney(total)}</span>
       </div>
     </>
   )

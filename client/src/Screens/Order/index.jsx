@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
-import { ShoppingCartOutlined } from '@material-ui/icons'
 
-import {
-  fetchIngredients,
-  fetchSandwiches,
-  calculatePrice,
-  convertFloatToMoney
-} from '../../Helpers'
+import { fetchIngredients, fetchSandwiches } from '../../Helpers'
 import Ingredient from '../../Components/Ingredient/index'
 import Burger from '../../Assets/burger.svg'
 import './Order.scss'
