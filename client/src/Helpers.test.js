@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+  getPromotionDiscount,
   calculatePrice,
   convertFloatToMoney,
   fetchIngredients,
@@ -9,16 +10,58 @@ import {
 jest.mock('axios')
 
 const MockIngredients = [
-  { id: 0, name: 'Alface', price: 0.4 },
+  { id: 0, name: 'Alface', price: 1 },
 
-  { id: 1, name: 'Bacon', price: 2.0 },
+  { id: 1, name: 'Bacon', price: 1 },
 
-  { id: 2, name: 'Hambúrguer de carne', price: 3.0 },
+  { id: 2, name: 'Hambúrguer de carne', price: 1 },
 
-  { id: 3, name: 'Ovo', price: 0.8 },
+  { id: 3, name: 'Ovo', price: 1 },
 
-  { id: 4, name: 'Queijo', price: 1.5 }
+  { id: 4, name: 'Queijo', price: 1 }
 ]
+
+describe('getPromotionDiscount', () => {
+  it('Should return zero', () => {
+    expect(getPromotionDiscount([0, 1, 2, 3, 4], MockIngredients)).toEqual(0)
+    expect(getPromotionDiscount([], MockIngredients)).toEqual(0)
+    expect(getPromotionDiscount([0, 1, 2, 3, 4], [])).toEqual(0)
+  })
+
+  it('Should return 10%', () => {
+    expect(getPromotionDiscount([0, 2, 3, 4], MockIngredients)).toBeCloseTo(0.4)
+  })
+
+  it('Should return -1 hamburger', () => {
+    expect(getPromotionDiscount([1, 2, 2, 2, 3, 4], MockIngredients)).toBe(1)
+  })
+
+  it('Should return -1 cheese', () => {
+    expect(getPromotionDiscount([1, 2, 3, 4, 4, 4], MockIngredients)).toBe(1)
+  })
+
+  it('Should return -2 hamburger', () => {
+    expect(
+      getPromotionDiscount([1, 2, 2, 2, 2, 2, 2, 2, 3, 4], MockIngredients)
+    ).toBe(2)
+  })
+
+  it('Should return -2 cheese', () => {
+    expect(
+      getPromotionDiscount([1, 2, 3, 4, 4, 4, 4, 4, 4, 4], MockIngredients)
+    ).toBe(2)
+  })
+
+  it('Should return -1 cheese -10%', () => {
+    expect(getPromotionDiscount([0, 2, 3, 4, 4, 4], MockIngredients)).toBe(1.5)
+  })
+
+  it('Should return -1 cheese -1 hamburger -10%', () => {
+    expect(
+      getPromotionDiscount([0, 2, 2, 2, 3, 4, 4, 4], MockIngredients)
+    ).toBe(2.6)
+  })
+})
 
 describe('calculatePrice', () => {
   it('Should return zero', () => {
@@ -27,8 +70,8 @@ describe('calculatePrice', () => {
     expect(calculatePrice([], [])).toEqual(0)
   })
 
-  it('Should return 5.8', () => {
-    expect(calculatePrice([1, 2, 3], MockIngredients)).toEqual(5.8)
+  it('Should return 3', () => {
+    expect(calculatePrice([1, 2, 3], MockIngredients)).toEqual(3)
   })
 })
 
