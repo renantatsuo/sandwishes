@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test MenuItem component Should render with no errors 1`] = `
+exports[`Test Ingredient component Should render with no errors 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <MenuItem
-    to="/"
-  />,
+  Symbol(enzyme.__unrendered__): <Ingredient />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -18,39 +16,46 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "host",
     "props": Object {
       "children": Array [
         <div
-          className="menu_item__photo"
+          className="ingredient__photo"
         >
           <img />
         </div>,
         <div
-          className="menu_item__info"
+          className="ingredient__info"
         >
           <div
-            className="menu_item__info--title"
+            className="ingredient__info--title"
           />
           <div
-            className="menu_item__info--desc"
-          />
-          <div
-            className="menu_item__info--price"
+            className="ingredient__info--price"
           >
             R$ 
             0,00
           </div>
         </div>,
         <div
-          className="menu_item__cart"
+          className="ingredient__cart"
         >
-          <pure(AddShoppingCartOutlinedIcon) />
+          <button
+            disabled={true}
+            type="button"
+          >
+            <pure(RemoveIcon) />
+          </button>
+          0
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            <pure(AddIcon) />
+          </button>
         </div>,
       ],
-      "className": "menu_item",
-      "replace": false,
-      "to": "/",
+      "className": "ingredient",
     },
     "ref": null,
     "rendered": Array [
@@ -60,7 +65,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <img />,
-          "className": "menu_item__photo",
+          "className": "ingredient__photo",
         },
         "ref": null,
         "rendered": Object {
@@ -84,19 +89,16 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
-              className="menu_item__info--title"
+              className="ingredient__info--title"
             />,
             <div
-              className="menu_item__info--desc"
-            />,
-            <div
-              className="menu_item__info--price"
+              className="ingredient__info--price"
             >
               R$ 
               0,00
             </div>,
           ],
-          "className": "menu_item__info",
+          "className": "ingredient__info",
         },
         "ref": null,
         "rendered": Array [
@@ -106,19 +108,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": undefined,
-              "className": "menu_item__info--title",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": undefined,
-              "className": "menu_item__info--desc",
+              "className": "ingredient__info--title",
             },
             "ref": null,
             "rendered": null,
@@ -133,7 +123,7 @@ ShallowWrapper {
                 "R$ ",
                 "0,00",
               ],
-              "className": "menu_item__info--price",
+              "className": "ingredient__info--price",
             },
             "ref": null,
             "rendered": Array [
@@ -150,61 +140,118 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <pure(AddShoppingCartOutlinedIcon) />,
-          "className": "menu_item__cart",
+          "children": Array [
+            <button
+              disabled={true}
+              type="button"
+            >
+              <pure(RemoveIcon) />
+            </button>,
+            0,
+            <button
+              onClick={[Function]}
+              type="button"
+            >
+              <pure(AddIcon) />
+            </button>,
+          ],
+          "className": "ingredient__cart",
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <pure(RemoveIcon) />,
+              "disabled": true,
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "button",
+          },
+          0,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <pure(AddIcon) />,
+              "onClick": [Function],
+              "type": "button",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "button",
+          },
+        ],
         "type": "div",
       },
     ],
-    "type": [Function],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
         "children": Array [
           <div
-            className="menu_item__photo"
+            className="ingredient__photo"
           >
             <img />
           </div>,
           <div
-            className="menu_item__info"
+            className="ingredient__info"
           >
             <div
-              className="menu_item__info--title"
+              className="ingredient__info--title"
             />
             <div
-              className="menu_item__info--desc"
-            />
-            <div
-              className="menu_item__info--price"
+              className="ingredient__info--price"
             >
               R$ 
               0,00
             </div>
           </div>,
           <div
-            className="menu_item__cart"
+            className="ingredient__cart"
           >
-            <pure(AddShoppingCartOutlinedIcon) />
+            <button
+              disabled={true}
+              type="button"
+            >
+              <pure(RemoveIcon) />
+            </button>
+            0
+            <button
+              onClick={[Function]}
+              type="button"
+            >
+              <pure(AddIcon) />
+            </button>
           </div>,
         ],
-        "className": "menu_item",
-        "replace": false,
-        "to": "/",
+        "className": "ingredient",
       },
       "ref": null,
       "rendered": Array [
@@ -214,7 +261,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <img />,
-            "className": "menu_item__photo",
+            "className": "ingredient__photo",
           },
           "ref": null,
           "rendered": Object {
@@ -238,19 +285,16 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
-                className="menu_item__info--title"
+                className="ingredient__info--title"
               />,
               <div
-                className="menu_item__info--desc"
-              />,
-              <div
-                className="menu_item__info--price"
+                className="ingredient__info--price"
               >
                 R$ 
                 0,00
               </div>,
             ],
-            "className": "menu_item__info",
+            "className": "ingredient__info",
           },
           "ref": null,
           "rendered": Array [
@@ -260,19 +304,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": undefined,
-                "className": "menu_item__info--title",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": undefined,
-                "className": "menu_item__info--desc",
+                "className": "ingredient__info--title",
               },
               "ref": null,
               "rendered": null,
@@ -287,7 +319,7 @@ ShallowWrapper {
                   "R$ ",
                   "0,00",
                 ],
-                "className": "menu_item__info--price",
+                "className": "ingredient__info--price",
               },
               "ref": null,
               "rendered": Array [
@@ -304,23 +336,73 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <pure(AddShoppingCartOutlinedIcon) />,
-            "className": "menu_item__cart",
+            "children": Array [
+              <button
+                disabled={true}
+                type="button"
+              >
+                <pure(RemoveIcon) />
+              </button>,
+              0,
+              <button
+                onClick={[Function]}
+                type="button"
+              >
+                <pure(AddIcon) />
+              </button>,
+            ],
+            "className": "ingredient__cart",
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {},
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <pure(RemoveIcon) />,
+                "disabled": true,
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "button",
+            },
+            0,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <pure(AddIcon) />,
+                "onClick": [Function],
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "button",
+            },
+          ],
           "type": "div",
         },
       ],
-      "type": [Function],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

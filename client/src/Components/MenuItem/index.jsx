@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { AddShoppingCartOutlined } from '@material-ui/icons'
 
 import { convertFloatToMoney } from '../../Helpers'
 import './MenuItem.scss'
 
-const MenuItem = ({ photo, title, desc, price }) => (
-  <button type="button" className="menu_item">
+const MenuItem = ({ desc, photo, price, title, to }) => (
+  <Link to={to} className="menu_item">
     <div className="menu_item__photo">
       <img src={photo} alt={title} />
     </div>
@@ -19,7 +20,7 @@ const MenuItem = ({ photo, title, desc, price }) => (
     <div className="menu_item__cart">
       <AddShoppingCartOutlined />
     </div>
-  </button>
+  </Link>
 )
 
 export default MenuItem
