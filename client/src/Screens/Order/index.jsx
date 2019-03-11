@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import { ShoppingCartOutlined } from '@material-ui/icons'
 
-import { fetchIngredients, fetchSandwiches } from '../../Helpers'
+import {
+  fetchIngredients,
+  fetchSandwiches,
+  calculatePrice,
+  convertFloatToMoney
+} from '../../Helpers'
 import Ingredient from '../../Components/Ingredient/index'
 import Burger from '../../Assets/burger.svg'
+import './Order.scss'
+import Receipt from '../../Components/Receipt/index'
 
 class Order extends Component {
   state = {
@@ -57,15 +65,20 @@ class Order extends Component {
     ))
 
   render() {
-    const { ingredients, sandwich } = this.state
+    const { ingredients, sandwich, recipe } = this.state
 
     return (
-      <div>
-        <h1>{sandwich.name || 'Ingredientes'}</h1>
-        {!sandwich
-          ? this.mapIngredients(ingredients)
-          : this.mapIngredients(ingredients, sandwich.recipe)}
-      </div>
+      <>
+        <div className="order__cart">
+          <Receipt recipe={recipe} ingredients={ingredients} />
+        </div>
+        <div>
+          <h1>{sandwich.name || 'Ingredientes'}</h1>
+          {!sandwich
+            ? this.mapIngredients(ingredients)
+            : this.mapIngredients(ingredients, sandwich.recipe)}
+        </div>
+      </>
     )
   }
 }

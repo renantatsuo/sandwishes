@@ -1,0 +1,38 @@
+.receipt__info {
+  flex: 1;
+  margin-left: 50px;
+
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+  color: #999999;
+
+  .receipt__item {
+    display: flex;
+
+    .receipt__item__desc {
+      flex: 1;
+    }
+  }
+}
+
+.receipt__total {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 25px;
+  margin-bottom: 30px;
+  background: #e73737;
+
+  span {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 45px;
+  }
+
+  svg {
+    color: #ffffff;
+    height: 32px;
+    width: 32px;
+  }
+}
