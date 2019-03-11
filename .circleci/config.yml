@@ -7,4 +7,6 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm test --prefix client
+      - run: npm test -- --coverate --prefix client
+      - store_artifacts:
+          path: coverage
