@@ -23,6 +23,8 @@ const MockIngredients = [
 describe('calculatePrice', () => {
   it('Should return zero', () => {
     expect(calculatePrice([], MockIngredients)).toEqual(0)
+    expect(calculatePrice([1, 2, 3], [])).toEqual(0)
+    expect(calculatePrice([], [])).toEqual(0)
   })
 
   it('Should return 5.8', () => {

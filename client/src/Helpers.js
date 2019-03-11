@@ -1,10 +1,13 @@
 import axios from 'axios'
 
 export const calculatePrice = (recipe, ingredients) =>
-  recipe.reduce(
-    (prev, curr) => prev + ingredients.filter((e) => e.id === curr)[0].price,
-    0
-  )
+  ingredients.length > 0
+    ? recipe.reduce(
+        (prev, curr) =>
+          prev + ingredients.filter((e) => e.id === curr)[0].price,
+        0
+      )
+    : 0
 
 export const convertFloatToMoney = (floatNumber) =>
   typeof floatNumber === 'number'
