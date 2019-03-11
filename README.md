@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/renantatsuo/sand-wishes/tree/master.svg?style=svg)](https://circleci.com/gh/renantatsuo/sand-wishes/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/renantatsuo/sand-wishes/badge.svg?branch=master)](https://coveralls.io/github/renantatsuo/sand-wishes?branch=master)
 # Sand Wishes
 React Webapp built based on [Dextra Front-end Challenge](https://github.com/renantatsuo/sand-wishes/blob/master/CHALLENGE.md)
 
