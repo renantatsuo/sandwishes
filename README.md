@@ -11,7 +11,7 @@ After checkout, run ```npm install``` to install dependencies.
 
 After install dependencies, run ```npm start``` to start the server and client.
 
-**client was built wih webpack dev with a proxy to server**
+**client was built with the webpack dev server with a proxy to the rest server, so the client start may take a little while**
 
 # Screen Concepts
 Screen concepts built on [Figma](https://www.figma.com/file/Mg2sAoP47m4FjIYqY4T1okJW/Sandwishes?node-id=36%3A0)
