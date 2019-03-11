@@ -21,7 +21,7 @@
     "start:server": "DEBUG=Server node index.js",
     "start:client": "npm start --prefix client",
     "start": "concurrently --kill-others \"npm run start:server\" \"npm run start:client\"",
-    "coveralls": "npm test --prefix client -- --coverage && cat ./client/coverate/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coveralls": "npm test --prefix client -- --coverage && cat ./client/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "postinstall": "npm install --prefix client"
   }
 }
