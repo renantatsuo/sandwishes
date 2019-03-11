@@ -1,0 +1,70 @@
+.ingredient {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 540px;
+  padding: 10px;
+  margin-bottom: 30px;
+
+  background: #ffffff;
+  border: none;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+
+  .ingredient__photo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .ingredient__info {
+    flex: 1;
+    margin: 0 20px;
+    text-align: left;
+    font-size: 14px;
+
+    > div {
+      margin: 5px;
+    }
+
+    .ingredient__info--title {
+      font-weight: bold;
+    }
+
+    .ingredient__info--desc {
+      color: #999999;
+    }
+  }
+
+  .ingredient__cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+
+    button {
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      padding: 0;
+
+      border: none;
+      cursor: pointer;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: #e73737;
+      }
+
+      &:disabled {
+        cursor: default;
+
+        svg {
+          width: 24px;
+          height: 24px;
+          fill: #999999;
+        }
+      }
+    }
+  }
+}
