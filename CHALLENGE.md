@@ -3,7 +3,8 @@
 
 Somos uma startup do ramo de alimentos e precisamos de uma aplicação web para gerir nosso negócio. Nossa especialidade é a venda de lanches, de modo que alguns lanches são opções de cardápio e outros podem conter ingredientes personalizados.
 
-  A seguir, apresentamos a lista de ingredientes disponíveis:
+A seguir, apresentamos a lista de ingredientes disponíveis:
+
 |INGREDIENTE|VALOR|
 |--|--|
 |Alface|R$ 0.40|
