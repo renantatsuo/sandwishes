@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { AddShoppingCartOutlined } from '@material-ui/icons'
 
-import { convertFloatToMoney } from '../../Helpers'
+import { convertFloatToMoney } from '../../helpers'
 import './MenuItem.scss'
 
 const MenuItem = ({ desc, photo, price, title, to }) => (

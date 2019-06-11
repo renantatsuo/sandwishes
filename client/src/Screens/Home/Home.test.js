@@ -5,7 +5,7 @@ import Home from './index'
 import {
   fetchIngredients,
   fetchSandwiches,
-  calculatePrice
+  calculateBasePrice
 } from '../../Helpers'
 
 jest.mock('../../Helpers')
@@ -29,7 +29,7 @@ const mockIngredients = [
 
 fetchSandwiches.mockResolvedValue(mockSandwiches)
 fetchIngredients.mockResolvedValue(mockIngredients)
-calculatePrice.mockImplementation(() => 6)
+calculateBasePrice.mockImplementation(() => 6)
 describe('Test Home Screen', () => {
   it('renders with data', () => {
     const app = shallow(<Home />)

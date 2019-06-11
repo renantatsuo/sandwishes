@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Add, Remove } from '@material-ui/icons'
 
-import { convertFloatToMoney } from '../../Helpers'
+import { convertFloatToMoney } from '../../helpers'
 import './Ingredient.scss'
 
 const Ingredient = ({

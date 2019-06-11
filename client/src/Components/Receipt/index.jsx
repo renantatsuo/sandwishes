@@ -1,23 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ShoppingCartOutlined } from '@material-ui/icons'
 
 import {
   convertFloatToMoney,
-  calculatePrice,
-  getPromotionDiscount
-} from '../../Helpers'
+  calculateBasePrice,
+  getPromotionDiscount,
+  countIngredientInRecipe
+} from '../../helpers'
 import './Receipt.scss'
 import ReceiptItem from '../ReceiptItem/index'
 
 const mapRecipe = (recipe, ingredients) => {
   const filteredIngredients = ingredients.filter(
-    (ingredient) => recipe.indexOf(ingredient.id) !== -1
+    (ingredient) => countIngredientInRecipe(ingredient.id, recipe) > 0
   )
 
   return filteredIngredients.map((ingredient) => {
-    const countIngredients = recipe.filter(
-      (e) => Number(e) === Number(ingredient.id)
-    ).length
+    const countIngredients = countIngredientInRecipe(ingredient.id, recipe)
     const ingredientName = ingredient.name
     const ingredientTotalPrice = countIngredients * ingredient.price
 
@@ -32,9 +31,20 @@ const mapRecipe = (recipe, ingredients) => {
 }
 
 const Receipt = ({ ingredients, recipe }) => {
-  const subTotal = calculatePrice(recipe, ingredients)
-  const promotionDiscount = getPromotionDiscount(recipe, ingredients)
-  const total = subTotal - promotionDiscount
+  const [promotionDiscount, setPromotionDiscount] = useState(0)
+  const [subTotal, setSubTotal] = useState(0)
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    getPromotionDiscount(recipe, ingredients)
+      .then(setPromotionDiscount)
+      .then(() => setSubTotal(calculateBasePrice(recipe, ingredients)))
+  }, [recipe])
+
+  useEffect(() => {
+    setTotal(subTotal - promotionDiscount)
+  }, [subTotal])
+
   return (
     <>
       <div className="receipt__info">

@@ -1,11 +1,11 @@
 import axios from 'axios'
 import {
   getPromotionDiscount,
-  calculatePrice,
+  calculateBasePrice,
   convertFloatToMoney,
   fetchIngredients,
   fetchSandwiches
-} from './Helpers'
+} from './helpers'
 
 jest.mock('axios')
 
@@ -63,15 +63,15 @@ describe('getPromotionDiscount', () => {
   })
 })
 
-describe('calculatePrice', () => {
+describe('calculateBasePrice', () => {
   it('Should return zero', () => {
-    expect(calculatePrice([], MockIngredients)).toEqual(0)
-    expect(calculatePrice([1, 2, 3], [])).toEqual(0)
-    expect(calculatePrice([], [])).toEqual(0)
+    expect(calculateBasePrice([], MockIngredients)).toEqual(0)
+    expect(calculateBasePrice([1, 2, 3], [])).toEqual(0)
+    expect(calculateBasePrice([], [])).toEqual(0)
   })
 
   it('Should return 3', () => {
-    expect(calculatePrice([1, 2, 3], MockIngredients)).toEqual(3)
+    expect(calculateBasePrice([1, 2, 3], MockIngredients)).toEqual(3)
   })
 })
 

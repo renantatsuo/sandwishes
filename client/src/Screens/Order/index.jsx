@@ -1,56 +1,52 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { fetchIngredients, fetchSandwiches } from '../../Helpers'
+import { fetchIngredients, fetchSandwiches } from '../../helpers'
 import Ingredient from '../../Components/Ingredient/index'
 import Burger from '../../Assets/burger.svg'
 import './Order.scss'
 import Receipt from '../../Components/Receipt/index'
 
-class Order extends Component {
-  state = {
-    ingredients: [],
-    sandwich: {},
-    recipe: []
+const Order = ({
+  match: {
+    params: { id = 0 }
   }
+}) => {
+  const [ingredients, setIngredients] = useState([])
+  const [sandwich, setSandwich] = useState({})
+  const [recipe, setRecipe] = useState([])
 
-  componentDidMount() {
-    const {
-      match: { params }
-    } = this.props
-
-    fetchIngredients().then((ingredients) => this.setState({ ingredients }))
-
-    if (params.id) {
-      fetchSandwiches().then((sandwiches) => {
-        const sandwich = sandwiches.filter(
-          (_sandwich) => Number(_sandwich.id) === Number(params.id)
+  useEffect(() => {
+    Promise.all([fetchIngredients(), fetchSandwiches()]).then(
+      ([ingredients, sandwiches]) => {
+        const currentSandwich = sandwiches.filter(
+          (_sandwich) => Number(_sandwich.id) === Number(id)
         )[0]
-        this.setState({ sandwich, recipe: sandwich.recipe })
-      })
-    }
-  }
 
-  handleAddIngredient = (ingredient) => {
-    const { recipe } = this.state
-    this.setState({ recipe: [...recipe, ingredient] })
-  }
+        setIngredients(ingredients)
+        setSandwich(currentSandwich)
+        setRecipe(currentSandwich.recipe)
+      }
+    )
+  }, [])
 
-  handleRemoveIngredient = (ingredient) => {
-    const { recipe } = this.state
+  const handleAddIngredient = (ingredient) => setRecipe([...recipe, ingredient])
+
+  const handleRemoveIngredient = (ingredient) => {
     const filteredRecipe = recipe.filter((e) => e !== ingredient)
     const newIngredients = recipe.filter((e) => e === ingredient).slice(0, -1)
-    this.setState({ recipe: [...filteredRecipe, ...newIngredients] })
+
+    setRecipe([...filteredRecipe, ...newIngredients])
   }
 
-  mapIngredients = (ingredients, recipe = []) =>
+  const mapIngredients = (ingredients, recipe = []) =>
     ingredients.map((ingredient) => (
       <Ingredient
-        addIngredient={this.handleAddIngredient}
+        addIngredient={handleAddIngredient}
         id={ingredient.id}
         key={ingredient.id}
         photo={Burger}
         price={ingredient.price}
-        removeIngredient={this.handleRemoveIngredient}
+        removeIngredient={handleRemoveIngredient}
         title={ingredient.name}
         quantity={
           recipe.filter((e) => Number(e) === Number(ingredient.id)).length
@@ -58,23 +54,19 @@ class Order extends Component {
       />
     ))
 
-  render() {
-    const { ingredients, sandwich, recipe } = this.state
-
-    return (
-      <>
-        <div className="order__cart">
-          <Receipt recipe={recipe} ingredients={ingredients} />
-        </div>
-        <div>
-          <h1>{sandwich.name || 'Ingredientes'}</h1>
-          {!sandwich
-            ? this.mapIngredients(ingredients)
-            : this.mapIngredients(ingredients, sandwich.recipe)}
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <div className="order__cart">
+        <Receipt recipe={recipe} ingredients={ingredients} />
+      </div>
+      <div>
+        <h1>{sandwich.name || 'Ingredientes'}</h1>
+        {!sandwich
+          ? mapIngredients(ingredients)
+          : mapIngredients(ingredients, sandwich.recipe)}
+      </div>
+    </>
+  )
 }
 
 export default Order
