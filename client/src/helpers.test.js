@@ -22,43 +22,59 @@ const MockIngredients = [
 ]
 
 describe('getPromotionDiscount', () => {
-  it('Should return zero', () => {
-    expect(getPromotionDiscount([0, 1, 2, 3, 4], MockIngredients)).toEqual(0)
-    expect(getPromotionDiscount([], MockIngredients)).toEqual(0)
-    expect(getPromotionDiscount([0, 1, 2, 3, 4], [])).toEqual(0)
-  })
-
-  it('Should return 10%', () => {
-    expect(getPromotionDiscount([0, 2, 3, 4], MockIngredients)).toBeCloseTo(0.4)
-  })
-
-  it('Should return -1 hamburger', () => {
-    expect(getPromotionDiscount([1, 2, 2, 2, 3, 4], MockIngredients)).toBe(1)
-  })
-
-  it('Should return -1 cheese', () => {
-    expect(getPromotionDiscount([1, 2, 3, 4, 4, 4], MockIngredients)).toBe(1)
-  })
-
-  it('Should return -2 hamburger', () => {
+  it('Should return zero', async () => {
     expect(
-      getPromotionDiscount([1, 2, 2, 2, 2, 2, 2, 2, 3, 4], MockIngredients)
+      await getPromotionDiscount([0, 1, 2, 3, 4], MockIngredients)
+    ).toEqual(0)
+    expect(await getPromotionDiscount([], MockIngredients)).toEqual(0)
+    expect(await getPromotionDiscount([0, 1, 2, 3, 4], [])).toEqual(0)
+  })
+
+  it('Should return 10%', async () => {
+    expect(
+      await getPromotionDiscount([0, 2, 3, 4], MockIngredients)
+    ).toBeCloseTo(0.4)
+  })
+
+  it('Should return -1 hamburger', async () => {
+    expect(
+      await getPromotionDiscount([1, 2, 2, 2, 3, 4], MockIngredients)
+    ).toBe(1)
+  })
+
+  it('Should return -1 cheese', async () => {
+    expect(
+      await getPromotionDiscount([1, 2, 3, 4, 4, 4], MockIngredients)
+    ).toBe(1)
+  })
+
+  it('Should return -2 hamburger', async () => {
+    expect(
+      await getPromotionDiscount(
+        [1, 2, 2, 2, 2, 2, 2, 2, 3, 4],
+        MockIngredients
+      )
     ).toBe(2)
   })
 
-  it('Should return -2 cheese', () => {
+  it('Should return -2 cheese', async () => {
     expect(
-      getPromotionDiscount([1, 2, 3, 4, 4, 4, 4, 4, 4, 4], MockIngredients)
+      await getPromotionDiscount(
+        [1, 2, 3, 4, 4, 4, 4, 4, 4, 4],
+        MockIngredients
+      )
     ).toBe(2)
   })
 
-  it('Should return -1 cheese -10%', () => {
-    expect(getPromotionDiscount([0, 2, 3, 4, 4, 4], MockIngredients)).toBe(1.5)
+  it('Should return -1 cheese -10%', async () => {
+    expect(
+      await getPromotionDiscount([0, 2, 3, 4, 4, 4], MockIngredients)
+    ).toBe(1.5)
   })
 
-  it('Should return -1 cheese -1 hamburger -10%', () => {
+  it('Should return -1 cheese -1 hamburger -10%', async () => {
     expect(
-      getPromotionDiscount([0, 2, 2, 2, 3, 4, 4, 4], MockIngredients)
+      await getPromotionDiscount([0, 2, 2, 2, 3, 4, 4, 4], MockIngredients)
     ).toBe(2.6)
   })
 })

@@ -6,10 +6,13 @@ const HAMBURGER_ID = 2
 const CHEESE_ID = 4
 
 export const calculateBasePrice = (recipe, ingredients = []) =>
-  recipe.reduce(
-    (prev, curr) => prev + ingredients.filter((e) => e.id === curr)[0].price,
-    0
-  )
+  recipe.length < 1 || ingredients.length < 1
+    ? 0
+    : recipe.reduce(
+        (prev, curr) =>
+          prev + ingredients.filter((e) => e.id === curr)[0].price,
+        0
+      )
 
 // is bacon a meat? ¯\_(ツ)_/¯
 // Light discount over total or subtotal?
@@ -71,6 +74,10 @@ const calculateLighDiscount = ({ recipe, ingredients, discount = 0 }) => {
 const getDiscountValue = ({ discount = 0 }) => discount
 
 export const getIngredientPrice = (ingredientId, ingredients = []) => {
+  if (ingredients.length === 0 || !ingredientId) {
+    return 0
+  }
+
   const { price = 0 } =
     ingredients.filter((ingredient) => ingredient.id === ingredientId)[0] || {}
 
