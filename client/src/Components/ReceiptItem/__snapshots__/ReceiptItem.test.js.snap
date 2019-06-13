@@ -1,3 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Ingredient component Should render values 1`] = `ShallowWrapper {}`;
+exports[`Test Ingredient component Should render values 1`] = `
+<div>
+  <div
+    class="receipt__item undefined"
+  >
+    <div
+      class="receipt__item__desc"
+    >
+      Test
+    </div>
+    <div
+      class="receipt__item__price"
+    >
+      R$ 
+      1,00
+    </div>
+  </div>
+</div>
+`;

@@ -1,14 +1,16 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { act } from '@testing-library/react'
 
 import Home from './index'
 import {
   fetchIngredients,
   fetchSandwiches,
   calculateBasePrice
-} from '../../Helpers'
+} from '../../helpers'
 
-jest.mock('../../Helpers')
+import { renderWithRouter } from '../../testingHelpers'
+
+jest.mock('../../helpers')
 
 const mockSandwiches = [
   {
@@ -30,24 +32,20 @@ const mockIngredients = [
 fetchSandwiches.mockResolvedValue(mockSandwiches)
 fetchIngredients.mockResolvedValue(mockIngredients)
 calculateBasePrice.mockImplementation(() => 6)
+
 describe('Test Home Screen', () => {
   it('renders with data', () => {
-    const app = shallow(<Home />)
+    const { container } = renderWithRouter(<Home />)
 
-    expect(app).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders with data', () => {
-    const app = shallow(<Home />)
-    const appInstance = app.instance()
-
-    appInstance.componentDidMount()
-
-    return fetchSandwiches().then(() =>
-      fetchIngredients().then(() => {
-        expect(app.state('sandwiches').length).toBe(1)
-        expect(app.state('sandwiches')[0].price).toBe(6)
+    act(() => {
+      const home = renderWithRouter(<Home />)
+      Promise.all([fetchSandwiches(), fetchIngredients()]).then(() => {
+        expect(home.container.querySelectorAll('.menu_item')).toHaveLength(1)
       })
-    )
+    })
   })
 })

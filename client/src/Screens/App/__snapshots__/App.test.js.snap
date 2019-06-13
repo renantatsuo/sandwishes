@@ -1,3 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test App screen renders without crashing 1`] = `ShallowWrapper {}`;
+exports[`Test App screen renders without crashing 1`] = `
+<div>
+  <div
+    class="app__card"
+  >
+    <div
+      class="app__header"
+    >
+      <img
+        alt="Sand Wishes Logo"
+        src="logo.svg"
+      />
+    </div>
+    <div
+      class="app__content"
+    >
+      <div
+        class="home__diy"
+      >
+        <a
+          class="home__diy__button"
+          href="/order"
+        >
+          Monte você mesmo
+        </a>
+      </div>
+      <div
+        class="home__menu"
+      >
+        <h1>
+          Escolher no cardápio
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+`;

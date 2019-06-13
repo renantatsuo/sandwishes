@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 import ReceiptItem from './index'
 
 describe('Test Ingredient component', () => {
@@ -8,10 +8,14 @@ describe('Test Ingredient component', () => {
       text: 'Test',
       price: 1
     }
-    const receiptItem = shallow(<ReceiptItem {...props} />)
+    const { container } = render(<ReceiptItem {...props} />)
 
-    expect(receiptItem.find('.receipt__item__price').text()).toMatch('R$ 1,00')
-    expect(receiptItem.find('.receipt__item__desc').text()).toMatch('Test')
-    expect(receiptItem).toMatchSnapshot()
+    expect(
+      container.querySelector('.receipt__item__price').textContent
+    ).toMatch('R$ 1,00')
+    expect(container.querySelector('.receipt__item__desc').textContent).toMatch(
+      'Test'
+    )
+    expect(container).toMatchSnapshot()
   })
 })

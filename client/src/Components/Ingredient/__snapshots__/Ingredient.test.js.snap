@@ -1,3 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Ingredient component Should render with no errors 1`] = `ShallowWrapper {}`;
+exports[`Test Ingredient component Should render with no errors 1`] = `
+<div>
+  <div
+    class="ingredient"
+  >
+    <div
+      class="ingredient__photo"
+    >
+      <img />
+    </div>
+    <div
+      class="ingredient__info"
+    >
+      <div
+        class="ingredient__info--title"
+      />
+      <div
+        class="ingredient__info--price"
+      >
+        R$ 
+        0,00
+      </div>
+    </div>
+    <div
+      class="ingredient__cart"
+    >
+      <button
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13H5v-2h14v2z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <button
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
