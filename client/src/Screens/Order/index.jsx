@@ -6,11 +6,7 @@ import Burger from '../../Assets/burger.svg'
 import './Order.scss'
 import Receipt from '../../Components/Receipt/index'
 
-const Order = ({
-  match: {
-    params: { id = 0 }
-  }
-}) => {
+const Order = ({ match: { params: { id } } = { params: { id: false } } }) => {
   const [ingredients, setIngredients] = useState([])
   const [sandwich, setSandwich] = useState({})
   const [recipe, setRecipe] = useState([])
@@ -18,13 +14,16 @@ const Order = ({
   useEffect(() => {
     Promise.all([fetchIngredients(), fetchSandwiches()]).then(
       ([ingredients, sandwiches]) => {
-        const currentSandwich = sandwiches.filter(
-          (_sandwich) => Number(_sandwich.id) === Number(id)
-        )[0]
+        if (id) {
+          const currentSandwich = sandwiches.filter(
+            (_sandwich) => Number(_sandwich.id) === Number(id)
+          )[0]
+
+          setSandwich(currentSandwich)
+          setRecipe(currentSandwich.recipe)
+        }
 
         setIngredients(ingredients)
-        setSandwich(currentSandwich)
-        setRecipe(currentSandwich.recipe)
       }
     )
   }, [])
@@ -38,8 +37,12 @@ const Order = ({
     setRecipe([...filteredRecipe, ...newIngredients])
   }
 
-  const mapIngredients = (ingredients, recipe = []) =>
-    ingredients.map((ingredient) => (
+  const mapIngredients = (ingredients = [], recipe = []) => {
+    if (ingredients.length < 1) {
+      return false
+    }
+
+    return ingredients.map((ingredient) => (
       <Ingredient
         addIngredient={handleAddIngredient}
         id={ingredient.id}
@@ -53,6 +56,7 @@ const Order = ({
         }
       />
     ))
+  }
 
   return (
     <>
@@ -60,7 +64,7 @@ const Order = ({
         <Receipt recipe={recipe} ingredients={ingredients} />
       </div>
       <div>
-        <h1>{sandwich.name || 'Ingredientes'}</h1>
+        <h1>{(sandwich && sandwich.name) || 'Ingredientes'}</h1>
         {!sandwich
           ? mapIngredients(ingredients)
           : mapIngredients(ingredients, sandwich.recipe)}

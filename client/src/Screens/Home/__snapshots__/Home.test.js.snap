@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Home Screen renders with data 1`] = `
+exports[`Test Home Screen Should render empty with no errors 1`] = `
 <div>
   <div
     class="home__diy"

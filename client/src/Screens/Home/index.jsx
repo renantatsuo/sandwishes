@@ -10,7 +10,11 @@ import {
 } from '../../helpers'
 import './Home.scss'
 
-const mapSandwiches = (sandwiches) => {
+const mapSandwiches = (sandwiches = []) => {
+  if (sandwiches.length < 1) {
+    return false
+  }
+
   return sandwiches.map((sandwich) => (
     <MenuItem
       desc={sandwich.description}

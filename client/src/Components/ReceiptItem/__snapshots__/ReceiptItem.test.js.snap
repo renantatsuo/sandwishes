@@ -3,7 +3,7 @@
 exports[`Test Ingredient component Should render values 1`] = `
 <div>
   <div
-    class="receipt__item undefined"
+    class="receipt__item "
   >
     <div
       class="receipt__item__desc"
