@@ -10,7 +10,11 @@ import {
 import './Receipt.scss'
 import ReceiptItem from '../ReceiptItem/index'
 
-const mapRecipe = (recipe, ingredients) => {
+const mapRecipe = (recipe = [], ingredients = []) => {
+  if (recipe.length < 1 || ingredients.length < 1) {
+    return false
+  }
+
   const filteredIngredients = ingredients.filter(
     (ingredient) => countIngredientInRecipe(ingredient.id, recipe) > 0
   )
@@ -33,17 +37,12 @@ const mapRecipe = (recipe, ingredients) => {
 const Receipt = ({ ingredients, recipe }) => {
   const [promotionDiscount, setPromotionDiscount] = useState(0)
   const [subTotal, setSubTotal] = useState(0)
-  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     getPromotionDiscount(recipe, ingredients)
       .then(setPromotionDiscount)
       .then(() => setSubTotal(calculateBasePrice(recipe, ingredients)))
-  }, [recipe])
-
-  useEffect(() => {
-    setTotal(subTotal - promotionDiscount)
-  }, [subTotal])
+  }, [recipe, ingredients])
 
   return (
     <>
@@ -57,12 +56,12 @@ const Receipt = ({ ingredients, recipe }) => {
             className="receipt__item--final"
           />
         ) : (
-          ''
+          false
         )}
       </div>
       <div className="receipt__total">
         <ShoppingCartOutlined />
-        <span>R$ {convertFloatToMoney(total)}</span>
+        <span>R$ {convertFloatToMoney(subTotal - promotionDiscount)}</span>
       </div>
     </>
   )
