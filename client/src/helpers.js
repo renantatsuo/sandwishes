@@ -5,95 +5,81 @@ const BACON_ID = 1
 const HAMBURGER_ID = 2
 const CHEESE_ID = 4
 
-export const calculateBasePrice = (recipe, ingredients = []) =>
-  recipe.length < 1 || ingredients.length < 1
-    ? 0
-    : recipe.reduce(
-        (prev, curr) =>
-          prev + ingredients.filter((e) => e.id === curr)[0].price,
-        0
-      )
-
 // is bacon a meat? ¯\_(ツ)_/¯
 // Light discount over total or subtotal?
-export const getPromotionDiscount = (recipe, ingredients) =>
-  Promise.resolve({ recipe, ingredients })
-    .then(calculateMeatDiscount)
-    .then(calculateCheeseDiscount)
-    .then(calculateLighDiscount)
-    .then(getDiscountValue)
-
-const calculateMeatDiscount = ({ recipe, ingredients, discount = 0 }) => {
-  const countMeat = countIngredientInRecipe(HAMBURGER_ID, recipe)
-  const newDiscount =
-    discount +
-    Math.floor(countMeat / 3) * getIngredientPrice(HAMBURGER_ID, ingredients)
-
-  return {
-    recipe,
-    ingredients,
-    discount: newDiscount
-  }
-}
-
-const calculateCheeseDiscount = ({ recipe, ingredients, discount = 0 }) => {
-  const countCheese = countIngredientInRecipe(CHEESE_ID, recipe)
-  const newDiscount =
-    discount +
-    Math.floor(countCheese / 3) * getIngredientPrice(CHEESE_ID, ingredients)
-
-  return {
-    recipe,
-    ingredients,
-    discount: newDiscount
-  }
-}
-
-const calculateLighDiscount = ({ recipe, ingredients, discount = 0 }) => {
-  const basePrice = calculateBasePrice(recipe, ingredients)
-  const lettuceCount = countIngredientInRecipe(LETTUCE_ID, recipe)
-  const baconCount = countIngredientInRecipe(BACON_ID, recipe)
-
-  if (lettuceCount > 0 && baconCount === 0) {
-    const newDiscount = discount + (basePrice - discount) / 10
-
-    return {
-      recipe,
-      ingredients,
-      discount: newDiscount
-    }
-  }
-
-  return {
-    recipe,
-    ingredients,
-    discount
-  }
-}
-
-const getDiscountValue = ({ discount = 0 }) => discount
-
-export const getIngredientPrice = (ingredientId, ingredients = []) => {
-  if (ingredients.length === 0 || !ingredientId) {
+export const getPromotionDiscount = async (recipe, ingredients) => {
+  if (recipe.length < 1 || ingredients.length < 1) {
     return 0
   }
 
-  const { price = 0 } =
-    ingredients.filter((ingredient) => ingredient.id === ingredientId)[0] || {}
+  const basePrice = calculateBasePrice(recipe, ingredients)
+  const meatDiscount = calculateMeatDiscount(recipe, ingredients)
+  const cheeseDiscount = calculateCheeseDiscount(recipe, ingredients)
 
-  return price
+  const baseDiscount = meatDiscount + cheeseDiscount
+
+  if (isLightRecipe(recipe)) {
+    const lightDiscount = basePrice * 0.1
+    return lightDiscount + baseDiscount
+  }
+
+  return meatDiscount + cheeseDiscount
+}
+
+export function calculateBasePrice(recipe, ingredients = []) {
+  return recipe.reduce(sumIngredientsPrices(ingredients), 0)
+}
+
+const sumIngredientsPrices = (ingredients) => (
+  sumAccumulator,
+  currentIngredientId
+) => {
+  return sumAccumulator + getIngredientPrice(currentIngredientId, ingredients)
+}
+
+const calculateMeatDiscount = (recipe, ingredients) => {
+  const countMeat = countIngredientInRecipe(HAMBURGER_ID, recipe)
+  const ingredientPrice = getIngredientPrice(HAMBURGER_ID, ingredients)
+
+  return Math.floor(countMeat / 3) * ingredientPrice
+}
+
+const calculateCheeseDiscount = (recipe, ingredients) => {
+  const countCheese = countIngredientInRecipe(CHEESE_ID, recipe)
+  const ingredientPrice = getIngredientPrice(CHEESE_ID, ingredients)
+
+  return Math.floor(countCheese / 3) * ingredientPrice
+}
+
+const getIngredientPrice = (ingredientId, ingredients = []) => {
+  if (ingredientId === undefined || ingredients.length === 0) {
+    return 0
+  }
+
+  const ingredient = getIngredientById(ingredientId, ingredients)
+  return ingredient.price
+}
+
+const getIngredientById = (ingredientId, ingredients) =>
+  ingredients.find((ingredient) => ingredient.id === ingredientId)
+
+const isLightRecipe = (recipe) => {
+  const lettuceCount = countIngredientInRecipe(LETTUCE_ID, recipe)
+  const baconCount = countIngredientInRecipe(BACON_ID, recipe)
+
+  return lettuceCount > 0 && baconCount === 0
 }
 
 export const countIngredientInRecipe = (ingredient, recipe) =>
   recipe.filter((ingredientId) => ingredientId === ingredient).length
 
-export const convertFloatToMoney = (floatNumber) =>
-  typeof floatNumber === 'number'
-    ? floatNumber
-        .toFixed(2)
-        .toString()
-        .replace('.', ',')
-    : '0,00'
+export const convertFloatToMoney = (floatNumber) => {
+  if (!(typeof floatNumber === 'number')) {
+    return '0,00'
+  }
+
+  return floatNumber.toFixed(2).toString().replace('.', ',')
+}
 
 export const fetchSandwiches = () =>
   axios.get('/api/sandwiches').then(({ data }) => data)

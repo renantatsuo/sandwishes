@@ -1,10 +1,10 @@
 import axios from 'axios'
 import {
-  getPromotionDiscount,
   calculateBasePrice,
   convertFloatToMoney,
   fetchIngredients,
-  fetchSandwiches
+  fetchSandwiches,
+  getPromotionDiscount,
 } from './helpers'
 
 jest.mock('axios')
@@ -18,7 +18,7 @@ const MockIngredients = [
 
   { id: 3, name: 'Ovo', price: 1 },
 
-  { id: 4, name: 'Queijo', price: 1 }
+  { id: 4, name: 'Queijo', price: 1 },
 ]
 
 describe('getPromotionDiscount', () => {
@@ -69,13 +69,13 @@ describe('getPromotionDiscount', () => {
   it('Should return -1 cheese -10%', async () => {
     expect(
       await getPromotionDiscount([0, 2, 3, 4, 4, 4], MockIngredients)
-    ).toBe(1.5)
+    ).toBe(1.6)
   })
 
   it('Should return -1 cheese -1 hamburger -10%', async () => {
     expect(
       await getPromotionDiscount([0, 2, 2, 2, 3, 4, 4, 4], MockIngredients)
-    ).toBe(2.6)
+    ).toBe(2.8)
   })
 })
 
