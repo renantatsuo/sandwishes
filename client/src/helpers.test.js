@@ -6,20 +6,9 @@ import {
   getPromotionDiscount,
 } from './helpers'
 import Http from './Lib/Http'
+import { MockIngredients } from './testingHelpers'
 
 jest.mock('./Lib/Http')
-
-const MockIngredients = [
-  { id: 0, name: 'Alface', price: 1 },
-
-  { id: 1, name: 'Bacon', price: 1 },
-
-  { id: 2, name: 'Hambúrguer de carne', price: 1 },
-
-  { id: 3, name: 'Ovo', price: 1 },
-
-  { id: 4, name: 'Queijo', price: 1 },
-]
 
 describe('getPromotionDiscount', () => {
   it('Should return zero', () => {

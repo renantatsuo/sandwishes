@@ -55,8 +55,8 @@ const getIngredientPrice = (ingredientId, ingredients = []) => {
     return 0
   }
 
-  const ingredient = getIngredientById(ingredientId, ingredients)
-  return ingredient.price
+  const { price } = getIngredientById(ingredientId, ingredients)
+  return price
 }
 
 const getIngredientById = (ingredientId, ingredients) =>

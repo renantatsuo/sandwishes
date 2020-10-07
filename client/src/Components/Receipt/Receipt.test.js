@@ -1,15 +1,8 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 import * as helpers from '../../helpers'
+import { MockIngredients } from '../../testingHelpers'
 import Receipt from './index'
-
-const MockIngredients = [
-  { id: 0, name: 'Alface', price: 1 },
-
-  { id: 1, name: 'Bacon', price: 1 },
-
-  { id: 2, name: 'Hambúrguer de carne', price: 1 },
-]
 
 const MockRecipe = [0, 1, 2]
 

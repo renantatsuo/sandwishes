@@ -22,8 +22,7 @@ exports[`Test Order Screen Should render empty with no errors 1`] = `
         />
       </svg>
       <span>
-        R$ 
-        0,00
+        R$ 0,00
       </span>
     </div>
   </div>
