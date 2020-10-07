@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/renantatsuo/sandwishes/tree/master.svg?style=svg)](https://circleci.com/gh/renantatsuo/sandwishes/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/renantatsuo/sand-wishes/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/renantatsuo/sand-wishes?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/renantatsuo/sandwishes/badge.svg)](https://coveralls.io/github/renantatsuo/sandwishes)
 
 # Sand Wishes
 
