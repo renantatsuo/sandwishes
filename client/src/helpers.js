@@ -7,12 +7,11 @@ const CHEESE_ID = 4
 
 // is bacon a meat? ¯\_(ツ)_/¯
 // Light discount over total or subtotal?
-export const getPromotionDiscount = async (recipe, ingredients) => {
-  if (recipe.length < 1 || ingredients.length < 1) {
-    return 0
-  }
-
-  const basePrice = calculateBasePrice(recipe, ingredients)
+export const getPromotionDiscount = (
+  basePrice,
+  recipe = [],
+  ingredients = []
+) => {
   const meatDiscount = calculateMeatDiscount(recipe, ingredients)
   const cheeseDiscount = calculateCheeseDiscount(recipe, ingredients)
 
@@ -26,7 +25,7 @@ export const getPromotionDiscount = async (recipe, ingredients) => {
   return meatDiscount + cheeseDiscount
 }
 
-export function calculateBasePrice(recipe, ingredients = []) {
+export function calculateBasePrice(recipe = [], ingredients = []) {
   return recipe.reduce(sumIngredientsPrices(ingredients), 0)
 }
 

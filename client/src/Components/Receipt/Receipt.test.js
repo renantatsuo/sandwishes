@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react'
 import React from 'react'
-import { render, waitForDomChange } from '@testing-library/react'
 import * as helpers from '../../helpers'
 import Receipt from './index'
 
@@ -8,7 +8,7 @@ const MockIngredients = [
 
   { id: 1, name: 'Bacon', price: 1 },
 
-  { id: 2, name: 'Hambúrguer de carne', price: 1 }
+  { id: 2, name: 'Hambúrguer de carne', price: 1 },
 ]
 
 const MockRecipe = [0, 1, 2]
@@ -23,6 +23,8 @@ describe('Test Receipt component', () => {
   })
 
   it('Should render with values', () => {
+    helpers.getPromotionDiscount = jest.fn().mockReturnValue(0)
+    helpers.calculateBasePrice = jest.fn().mockReturnValue(1)
     const { container } = render(
       <Receipt ingredients={MockIngredients} recipe={MockRecipe} />
     )
@@ -31,22 +33,12 @@ describe('Test Receipt component', () => {
   })
 
   it('Should render with discount', async () => {
-    helpers.getPromotionDiscount = jest.fn().mockResolvedValue(1)
+    helpers.getPromotionDiscount = jest.fn().mockReturnValue(1)
+    helpers.calculateBasePrice = jest.fn().mockReturnValue(1)
 
     const { container } = render(
-      <Receipt ingredients={MockIngredients} recipe={[]} />
+      <Receipt ingredients={MockIngredients} recipe={MockRecipeWithDiscount} />
     )
-    expect(container.querySelectorAll('.receipt__item')).toHaveLength(0)
-
-    render(
-      <Receipt ingredients={MockIngredients} recipe={MockRecipeWithDiscount} />,
-      {
-        container
-      }
-    )
-
-    await waitForDomChange
-
     expect(container.querySelectorAll('.receipt__item')).toHaveLength(3)
     expect(container.querySelectorAll('.receipt__item--final')).toHaveLength(1)
   })
