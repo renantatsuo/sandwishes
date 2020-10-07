@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react'
 import { Add, Remove } from '@material-ui/icons'
-
+import React, { useEffect, useState } from 'react'
 import { convertFloatToMoney } from '../../helpers'
 import './Ingredient.scss'
 
-const Ingredient = ({
+export default function Ingredient({
   addIngredient,
   id,
   photo,
   price,
   removeIngredient,
   quantity,
-  title
-}) => {
+  title,
+}) {
   const [counter, setCounter] = useState(0)
 
   const handleAdd = () => {
@@ -40,15 +39,9 @@ const Ingredient = ({
         </div>
       </div>
       <div className="ingredient__cart">
-        {counter === 0 ? (
-          <button type="button" disabled>
-            <Remove />
-          </button>
-        ) : (
-          <button type="button" onClick={handleRemove}>
-            <Remove />
-          </button>
-        )}
+        <button type="button" onClick={handleRemove} disabled={counter === 0}>
+          <Remove />
+        </button>
         {counter}
         <button type="button" onClick={handleAdd}>
           <Add />
@@ -57,5 +50,3 @@ const Ingredient = ({
     </div>
   )
 }
-
-export default Ingredient
