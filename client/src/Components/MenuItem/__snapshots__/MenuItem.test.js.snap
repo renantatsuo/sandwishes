@@ -23,8 +23,7 @@ exports[`Test MenuItem component Should render with no errors 1`] = `
       <div
         class="menu_item__info--price"
       >
-        R$ 
-        0,00
+        R$ 0,00
       </div>
     </div>
     <div
