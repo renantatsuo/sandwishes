@@ -1,4 +1,4 @@
-import axios from 'axios'
+import Http from './Lib/Http'
 
 const LETTUCE_ID = 0
 const BACON_ID = 1
@@ -82,7 +82,7 @@ export const convertFloatToMoney = (floatNumber) => {
 }
 
 export const fetchSandwiches = () =>
-  axios.get('/api/sandwiches').then(({ data }) => data)
+  Http.get('/api/sandwiches').then(({ data }) => data)
 
 export const fetchIngredients = () =>
-  axios.get('/api/ingredients').then(({ data }) => data)
+  Http.get('/api/ingredients').then(({ data }) => data)

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
   calculateBasePrice,
   convertFloatToMoney,
@@ -6,8 +5,9 @@ import {
   fetchSandwiches,
   getPromotionDiscount,
 } from './helpers'
+import Http from './Lib/Http'
 
-jest.mock('axios')
+jest.mock('./Lib/Http')
 
 const MockIngredients = [
   { id: 0, name: 'Alface', price: 1 },
@@ -111,7 +111,7 @@ describe('convertFloatToMoney', () => {
 
 describe('fetchSandwiches', () => {
   it('Should return []', () => {
-    axios.get.mockResolvedValue({ data: [] })
+    Http.get.mockResolvedValue({ data: [] })
 
     return fetchSandwiches().then((sandwiches) =>
       expect(sandwiches).toHaveLength(0)
@@ -119,7 +119,7 @@ describe('fetchSandwiches', () => {
   })
 
   it('Should return 1 object', () => {
-    axios.get.mockResolvedValue({ data: [{}] })
+    Http.get.mockResolvedValue({ data: [{}] })
 
     return fetchSandwiches().then((sandwiches) => {
       expect(sandwiches).toHaveLength(1)
@@ -130,7 +130,7 @@ describe('fetchSandwiches', () => {
 
 describe('fetchIngredients', () => {
   it('Should return []', () => {
-    axios.get.mockResolvedValue({ data: [] })
+    Http.get.mockResolvedValue({ data: [] })
 
     return fetchIngredients().then((ingredients) =>
       expect(ingredients).toHaveLength(0)
@@ -138,7 +138,7 @@ describe('fetchIngredients', () => {
   })
 
   it('Should return 1 object', () => {
-    axios.get.mockResolvedValue({ data: [{}] })
+    Http.get.mockResolvedValue({ data: [{}] })
 
     return fetchIngredients().then((ingredients) => {
       expect(ingredients).toHaveLength(1)
