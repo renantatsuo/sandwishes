@@ -1,6 +1,6 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "react/jsx-filename-extension": [
       1,
@@ -18,7 +18,8 @@
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
     "no-use-before-define": 0,
-    "semi": 0
+    "semi": 0,
+    "react-hooks/rules-of-hooks": "error"
   },
   "globals": {
     "window": true,
