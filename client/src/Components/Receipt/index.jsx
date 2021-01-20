@@ -5,7 +5,7 @@ import {
   convertFloatToMoney,
   countIngredientInRecipe,
   getPromotionDiscount,
-} from '../../helpers'
+} from '../../Lib/Pricing'
 import ReceiptItem from '../ReceiptItem/index'
 import './Receipt.scss'
 

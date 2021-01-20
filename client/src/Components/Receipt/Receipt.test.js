@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import * as helpers from '../../helpers'
+import * as Pricing from '../../Lib/Pricing'
 import { MockIngredients } from '../../testingHelpers'
 import Receipt from './index'
 
@@ -16,8 +16,8 @@ describe('Test Receipt component', () => {
   })
 
   it('Should render with values', () => {
-    helpers.getPromotionDiscount = jest.fn().mockReturnValue(0)
-    helpers.calculateBasePrice = jest.fn().mockReturnValue(1)
+    Pricing.getPromotionDiscount = jest.fn().mockReturnValue(0)
+    Pricing.calculateBasePrice = jest.fn().mockReturnValue(1)
     const { container } = render(
       <Receipt ingredients={MockIngredients} recipe={MockRecipe} />
     )
@@ -26,8 +26,8 @@ describe('Test Receipt component', () => {
   })
 
   it('Should render with discount', async () => {
-    helpers.getPromotionDiscount = jest.fn().mockReturnValue(1)
-    helpers.calculateBasePrice = jest.fn().mockReturnValue(1)
+    Pricing.getPromotionDiscount = jest.fn().mockReturnValue(1)
+    Pricing.calculateBasePrice = jest.fn().mockReturnValue(1)
 
     const { container } = render(
       <Receipt ingredients={MockIngredients} recipe={MockRecipeWithDiscount} />

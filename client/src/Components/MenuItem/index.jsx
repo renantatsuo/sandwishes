@@ -1,7 +1,7 @@
 import { AddShoppingCartOutlined } from '@material-ui/icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { convertFloatToMoney } from '../../helpers'
+import { convertFloatToMoney } from '../../Lib/Pricing'
 import './MenuItem.scss'
 
 export default function MenuItem({ desc, photo, price, title, to }) {

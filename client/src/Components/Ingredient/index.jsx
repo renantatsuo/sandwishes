@@ -1,6 +1,6 @@
 import { Add, Remove } from '@material-ui/icons'
 import React, { useEffect, useState } from 'react'
-import { convertFloatToMoney } from '../../helpers'
+import { convertFloatToMoney } from '../../Lib/Pricing'
 import './Ingredient.scss'
 
 export default function Ingredient({

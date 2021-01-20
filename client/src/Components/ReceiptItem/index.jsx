@@ -1,5 +1,5 @@
 import React from 'react'
-import { convertFloatToMoney } from '../../helpers'
+import { convertFloatToMoney } from '../../Lib/Pricing'
 
 const ReceiptItem = ({ className = '', price, text }) => {
   return (
