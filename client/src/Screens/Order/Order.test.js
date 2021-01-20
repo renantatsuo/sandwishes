@@ -1,8 +1,12 @@
-import { act } from '@testing-library/react'
 import React from 'react'
-import * as helpers from '../../helpers'
+import { screen, act } from '@testing-library/react'
 import { MockIngredients, renderWithRouter } from '../../testingHelpers'
+import { useIngredients } from '../../Lib/Hooks/useIngredients'
+import { useSandwiches } from '../../Lib/Hooks/useSandwiches'
 import Order from './index'
+
+jest.mock('../../Lib/Hooks/useIngredients')
+jest.mock('../../Lib/Hooks/useSandwiches')
 
 const MockSandwich = {
   id: 0,
@@ -13,38 +17,29 @@ const MockSandwich = {
 
 describe('Test Order Screen', () => {
   it('Should render empty with no errors', () => {
+    useIngredients.mockReturnValue([])
+    useSandwiches.mockReturnValue([])
     const { container } = renderWithRouter(<Order />)
 
     expect(container).toMatchSnapshot()
   })
 
   it('Should render ingredients with no recipe', async () => {
-    helpers.fetchIngredients = jest.fn().mockResolvedValue(MockIngredients)
-    helpers.fetchSandwiches = jest.fn().mockResolvedValue([])
+    useIngredients.mockReturnValue(MockIngredients)
+    useSandwiches.mockReturnValue([])
 
-    const { container } = renderWithRouter(<Order />)
-    await act(() =>
-      Promise.all([helpers.fetchIngredients(), helpers.fetchSandwiches()])
-    )
+    renderWithRouter(<Order />)
 
-    expect(container.querySelectorAll('.ingredient')).toHaveLength(
-      MockIngredients.length
-    )
+    expect(screen.getAllByRole('listitem')).toHaveLength(MockIngredients.length)
   })
 
   it('Should render ingredients with sandwich recipe', async () => {
-    helpers.fetchIngredients = jest.fn().mockResolvedValue(MockIngredients)
-    helpers.fetchSandwiches = jest.fn().mockResolvedValue([MockSandwich])
+    useIngredients.mockReturnValue(MockIngredients)
+    useSandwiches.mockReturnValue([MockSandwich])
 
-    const { container } = renderWithRouter(
-      <Order match={{ params: { id: '0' } }} />
-    )
+    renderWithRouter(<Order match={{ params: { id: '0' } }} />)
 
-    await act(() =>
-      Promise.all([helpers.fetchIngredients(), helpers.fetchSandwiches()])
-    )
-
-    expect(container.querySelectorAll('h1')[0].textContent).toStrictEqual(
+    expect(screen.getByRole('heading').textContent).toStrictEqual(
       MockSandwich.name
     )
   })

@@ -26,7 +26,9 @@ exports[`Test Order Screen Should render empty with no errors 1`] = `
       </span>
     </div>
   </div>
-  <div>
+  <div
+    role="list"
+  >
     <h1>
       Ingredientes
     </h1>

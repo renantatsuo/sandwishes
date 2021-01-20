@@ -28,7 +28,7 @@ export default function Ingredient({
   }, [quantity])
 
   return (
-    <div className="ingredient">
+    <div className="ingredient" role="listitem">
       <div className="ingredient__photo">
         <img src={photo} alt={title} />
       </div>

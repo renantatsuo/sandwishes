@@ -5,6 +5,8 @@ import './App.scss'
 import Logo from '../../Assets/logo.svg'
 import Home from '../Home/index'
 import Order from '../Order'
+import { IngredientsProvider } from '../../Lib/Hooks/useIngredients'
+import { SandwichesProvider } from '../../Lib/Hooks/useSandwiches'
 
 const App = () => {
   return (
@@ -14,9 +16,13 @@ const App = () => {
           <img src={Logo} alt="Sand Wishes Logo" />
         </div>
         <div className="app__content">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/order" component={Order} />
-          <Route path="/order/:id" component={Order} />
+          <IngredientsProvider>
+            <SandwichesProvider>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/order" component={Order} />
+              <Route path="/order/:id" component={Order} />
+            </SandwichesProvider>
+          </IngredientsProvider>
         </div>
       </div>
     </Router>

@@ -4,6 +4,7 @@ exports[`Test Ingredient component Should render with no errors 1`] = `
 <div>
   <div
     class="ingredient"
+    role="listitem"
   >
     <div
       class="ingredient__photo"
